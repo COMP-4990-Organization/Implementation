@@ -199,11 +199,11 @@ def draw_grid(win, rows, width):
 
 # Using the map file to generate the testing map
 
-def generate_map(grid):
+def generate_map(grid, rows):
     start = None; end = None; obstacles = 0
     content = map_file.readlines()
     for row, line in enumerate(content):
-        if row == 50:
+        if row == rows:
             break
         for col, value in enumerate(line):
             if value == '0':
@@ -261,7 +261,7 @@ def main(win, width):
 	map_size = ROWS ** 2
 	
 	grid = make_grid(ROWS, width)
-	start, end, obstacles = generate_map(grid)
+	start, end, obstacles = generate_map(grid, ROWS)
 
 	obstacle_density = (obstacles / map_size) * 100
 	map_file.close()
