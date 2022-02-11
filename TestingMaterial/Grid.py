@@ -18,6 +18,3 @@ class Grid:
             for j in range(rows):
                 spot = Spot.Spot(i, j, gap, rows, grid)
                 grid[i].append(spot)
-
-
-	

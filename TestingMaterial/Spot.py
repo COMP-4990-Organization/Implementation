@@ -7,7 +7,6 @@ import Constants as const
 class Spot:
 
 	# Constructor for Spot object
-
 	def __init__(self, row, col, width, total_rows, grid):
 		self.row = row
 		self.col = col
@@ -20,12 +19,10 @@ class Spot:
 		self.grid = grid
 
 	# Function to reset node
-
 	def reset(self):
 		self.color = const.WHITE
 
 	# All Getter Functions for Node
-
 	def get_pos(self):
 		return self.row, self.col
 
@@ -48,7 +45,6 @@ class Spot:
 		return self.color == const.PURPLE
 
 	# All Setter Functions for Node
-
 	def make_start(self):
 		self.color = const.ORANGE
 
@@ -67,8 +63,7 @@ class Spot:
 	def make_path(self):
 		self.color = const.PURPLE
 
-    # All Helper Functions for Node
-
+	# All Helper Functions for Node
 	def draw(self, win):
 		pygame.draw.rect(win, self.color, (self.x, self.y, self.width, self.width))
 	

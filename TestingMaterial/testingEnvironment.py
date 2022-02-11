@@ -13,6 +13,7 @@ import Grid
 
 # Path Finding Algorithm Imports
 from astar import ASTAR
+from dfs import DFS
 
 # Pygame Window Information
 
@@ -46,6 +47,7 @@ map_file_name, algorithm_name = execution_check()
 
 map_file = open(map_file_name, "r")
 astar_object = ASTAR()
+dfs_object = DFS()
 
 # --------------- Path Finding Algorithm Helper Functions --------------- #
 
@@ -193,11 +195,10 @@ def main(win, width):
 		if algorithm_name == "astar":
 
 			# Starting timer for execution of astar
-
 			start_time = time.time()
 
 			# Running Path Finding Algorithm
-			astar_object.astar(lambda: draw(win, grid.grid, ROWS, width), heuristic, reconstruct_path, grid.grid, start, end)
+			astar_object.astar(lambda: draw(win, grid.grid, ROWS, width), heuristic, grid.grid, start, end)
 
 			# Ending timer for execution of astar
 			end_time = time.time()
@@ -207,7 +208,18 @@ def main(win, width):
 		elif algorithm_name == "bfs":
 			pass
 		elif algorithm_name == "dfs":
-			pass
+
+			# Starting timer for execution of astar
+			start_time = time.time()
+
+			# Running Path Finding Algorithm
+			dfs_object.dfs(lambda: draw(win, grid.grid, ROWS, width), ROWS, grid, start)
+
+			# Ending timer for execution of astar
+			end_time = time.time()
+
+			execution_time = end_time - start_time
+
 		elif algorithm_name == "dijkstra":
 			pass
 		else:

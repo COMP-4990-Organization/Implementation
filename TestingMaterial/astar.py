@@ -4,7 +4,7 @@ from queue import PriorityQueue
 
 class ASTAR:
 
-    def astar(self, draw, heuristic, reconstruct_path, grid, start, end):
+    def astar(self, draw, heuristic, grid, start, end):
         count = 0
         open_set = PriorityQueue()
         open_set.put((0, count, start))
@@ -25,10 +25,7 @@ class ASTAR:
             open_set_hash.remove(current)
 
             if current == end:
-                reconstruct_path(came_from, end, draw)
-                end.make_end()
-                print(len(open_set_hash))
-                return True
+                break
             
             for neighbor in current.neighbors:
                 temp_g_score = g_score[current] + 1
