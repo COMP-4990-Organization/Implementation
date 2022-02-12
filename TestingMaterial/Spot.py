@@ -3,6 +3,7 @@
 
 import pygame
 import Constants as const
+from random import randint
 
 class Spot:
 
@@ -17,6 +18,8 @@ class Spot:
 		self.width = width
 		self.total_rows = total_rows
 		self.grid = grid
+		
+		self.weight = randint(1,10)
 
 	# Function to reset node
 	def reset(self):
