@@ -131,11 +131,11 @@ class Grid:
             number = int(infile.read())
         number += 1
         number = str(number)
-        filename = "Grid_" + number + ".txt"
+        filename = "Grid_" + number
 
         # Writes the grid to a file and adds surrounding barriers to the grid
         # because of this a 50x50 grid becomes a 52x52
-        with open(folderpath+filename, "w") as outfile:
+        with open(folderpath+filename+".txt", "w") as outfile:
             for i in range(self.rows+2):
                 outfile.write('1')
             outfile.write('\n')
@@ -147,6 +147,19 @@ class Grid:
 
             for i in range(self.rows+2):
                 outfile.write('1')
+    
+        with open(folderpath+filename+"_weights.txt", "w") as outfile:
+            for i in range(self.rows+2):
+                outfile.write('1 ')
+            outfile.write('\n')
+            for row in self.grid:
+                outfile.write('1 ')
+                for spot in row:
+                    outfile.write(str(spot.weight)+' ')
+                outfile.write('1\n')
+
+            for i in range(self.rows+2):
+                outfile.write('1 ')
 
         with open("SearchWindow\\GridNumber", 'w') as infile:
             infile.write(number)        

@@ -5,6 +5,7 @@ import pygame
 import math
 import time
 import sys
+from os import path
 
 # Helper Imports
 
@@ -110,6 +111,25 @@ def upload_map(grid, rows):
             elif value == '3':
                 grid[col][row].make_end() # Make End
                 end = grid[col][row]
+
+    weight_map = map_file.name.strip(".txt")+"_weights.txt"
+
+    if(path.exists(weight_map)):
+        content_weight = open(weight_map,'r').readlines()
+        for row, line in enumerate(content_weight):
+            if row == rows:
+                break
+            line = line.strip('\n')
+            weights = line.split(' ')
+            while('' in weights):
+                weights.remove('')
+            for col, weight in enumerate(weights):
+                grid[col][row].weight = int(weight)
+    else:
+        for row in grid:
+            for spot in row:
+                spot.weight = 1
+
     return start, end, obstacles
 
 # Main draw function of the program will refresh every frame
