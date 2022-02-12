@@ -2,7 +2,7 @@
 
 # Basic Imports
 import pygame
-
+from random import randint
 # Import the necessary classes
 from Constants import Constants
 
@@ -21,6 +21,7 @@ class Node:
         self.neighbours = []
         self.width = width
         self.total_rows = total_rows
+        self.weight = randint(1,10)
 
     # Basic Getters
     def get_pos(self):

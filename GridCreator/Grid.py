@@ -127,7 +127,7 @@ class Grid:
         # Read the current number of Grids that have been written
         # in order to get a new filename
         number = 0
-        with open("SearchWindow\\GridNumber", 'r', newline='') as infile:
+        with open("GridCreator\\GridNumber", 'r', newline='') as infile:
             number = int(infile.read())
         number += 1
         number = str(number)
@@ -161,5 +161,5 @@ class Grid:
             for i in range(self.rows+2):
                 outfile.write('1 ')
 
-        with open("SearchWindow\\GridNumber", 'w') as infile:
+        with open("GridCreator\\GridNumber", 'w') as infile:
             infile.write(number)        
