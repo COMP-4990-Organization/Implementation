@@ -88,3 +88,6 @@ class Node:
 
         if self.col > 0 and not grid[self.row][self.col - 1].is_barrier(): # LEFT
             self.neighbours.append(grid[self.row][self.col - 1])
+    
+    def __lt__(self, other):
+        return False

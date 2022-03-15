@@ -9,8 +9,8 @@ from os import path
 
 # Helper Imports
 
-import Constants as const
-import Grid
+import Constants2 as const
+import Grid2
 
 # Path Finding Algorithm Imports
 from astar import ASTAR
@@ -174,7 +174,7 @@ def main(win, width):
 
 	map_size = ROWS ** 2
 
-	grid = Grid.Grid(ROWS, const.WIDTH, map_file_name)
+	grid = Grid2.Grid(ROWS, const.WIDTH, map_file_name)
 
 	grid.make_grid(ROWS, const.WIDTH, grid.grid)
 	
@@ -222,7 +222,7 @@ def main(win, width):
 			start_time = time.time()
 
 			# Running Path Finding Algorithm
-			astar_object.astar(lambda: draw(win, grid.grid, ROWS, width), heuristic, grid.grid, start, end)
+			astar_object.astar(lambda: draw(win, grid.grid, ROWS, width), heuristic, grid, start, end)
 
 			# Ending timer for execution of astar
 			end_time = time.time()
@@ -258,7 +258,7 @@ def main(win, width):
 			start_time = time.time()
 
 			# Running Path Finding Algorithm
-			dijkstra_object.dijkstra(lambda: draw(win, grid.grid, ROWS, width), grid.grid, start, end)
+			dijkstra_object.dijkstra(lambda: draw(win, grid.grid, ROWS, width), grid, start, end)
 
 			# Ending timer for execution of astar
 			end_time = time.time()

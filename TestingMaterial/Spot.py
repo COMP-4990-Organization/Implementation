@@ -2,7 +2,7 @@
 # Basic Imports
 
 import pygame
-import Constants as const
+import Constants2 as const
 from random import randint
 
 class Spot:
