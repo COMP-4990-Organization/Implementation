@@ -12,7 +12,7 @@ class Node:
     # Initializer for the Node class
     # Takes the row and col of the Node, the width of the node
     # x and y offset and the total number of rows in the grid
-    def __init__(self, row, col, width, x_offset, y_offset, total_rows):
+    def __init__(self, row, col, width, x_offset, y_offset, total_rows, weight = -1):
         self.row = row
         self.col = col
         self.x = row * width + x_offset
@@ -20,8 +20,11 @@ class Node:
         self.color = Constants.WHITE
         self.neighbours = []
         self.width = width
-        self.total_rows = total_rows
-        self.weight = randint(1,10)
+        self.total_rows = total_rows    
+        if weight == -1:
+            self.weight = randint(1,10)
+        else:
+            self.weight = weight
 
     # Basic Getters
     def get_pos(self):

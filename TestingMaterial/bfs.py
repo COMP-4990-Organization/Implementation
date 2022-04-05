@@ -95,3 +95,6 @@ class BFS:
                     g_score[(adjacentNodeRow, adjacentNodeCol)] = g_score[(current_spot.row, current_spot.col)] + grid.grid[adjacentNodeRow][adjacentNodeCol].weight
 
             draw()
+
+    def __str__(self) -> str:
+        return "BFS"

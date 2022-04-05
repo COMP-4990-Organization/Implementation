@@ -88,3 +88,6 @@ class DIJKSTRA:
                 current.make_closed()
             visited_set.add(current)
         return False
+
+    def __str__(self) -> str:
+        return "DIJKSTRA"

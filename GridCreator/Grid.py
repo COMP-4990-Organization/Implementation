@@ -17,7 +17,7 @@ class Grid:
     # Takes a pygame window, rows of the grid, width of the grid
     # x and y offset if multiple grids want to be displayed on a single window
     # and cols if the number of rows and cols are different
-    def __init__(self, win, rows, width, x_offset = 0, y_offset = 0, cols=0):
+    def __init__(self, win, rows, width, x_offset = 0, y_offset = 0, cols=0, weights = -1):
         self.win = win
         self.rows = rows
         if(cols==0):
@@ -40,7 +40,7 @@ class Grid:
         for i in range(self.rows):
             self.grid.append([])
             for j in range(self.cols):
-                self.grid[i].append(Node(i,j,gap, x_offset, y_offset, rows))
+                self.grid[i].append(Node(i,j,gap, x_offset, y_offset, rows,weight=weights))
 
     # Sets all nodes in the grid to open (WHITE)
     def reset_grid(self):
@@ -58,7 +58,8 @@ class Grid:
                     pass
                 else:
                     spot.reset()
-                    spot.draw(self.win)
+                    if (self.drawable):
+                        spot.draw(self.win)
 
     # Updates the neighbours of all the nodes in the Grid
     def update_neighbours(self):
@@ -169,16 +170,20 @@ class Grid:
         return i
 
     # Writes the grid to a file
-    def save_to_file(self, folderpath="Grids\\"):
-
-        # Read the current number of Grids that have been written
-        # in order to get a new filename
+    def save_to_file(self, folderpath="Grids\\", description=''):
         number = 0
-        with open("GridCreator\\GridNumber", 'r', newline='') as infile:
-            number = int(infile.read())
-        number += 1
-        number = str(number)
-        filename = "Grid_" + number
+        if description == '':
+            # Read the current number of Grids that have been written
+            # in order to get a new filename
+
+            with open("GridCreator\\GridNumber", 'r', newline='') as infile:
+                number = int(infile.read())
+            
+            number += 1
+            number = str(number)
+            filename = "Grid_" + number
+        else:
+            filename = "Grid_" + description
 
         # Writes the grid to a file and adds surrounding barriers to the grid
         # because of this a 50x50 grid becomes a 52x52
@@ -207,9 +212,9 @@ class Grid:
 
             for i in range(self.rows+2):
                 outfile.write('1 ')
-
-        with open("GridCreator\\GridNumber", 'w') as infile:
-            infile.write(number)
+        if description == '':
+            with open("GridCreator\\GridNumber", 'w') as infile:
+                infile.write(number)
         
         # Read a Grid from a file and save it to a Grid object
     # Maybe should be moved to a seperate class that handles creating all Grids

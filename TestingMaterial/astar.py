@@ -102,3 +102,6 @@ class ASTAR:
                 current.make_closed()
 
         return False
+
+    def __str__(self) -> str:
+        return "ASTAR"

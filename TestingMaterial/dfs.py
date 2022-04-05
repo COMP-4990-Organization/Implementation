@@ -91,3 +91,6 @@ class DFS:
                         grid.grid[adjacentNodeRow][adjacentNodeCol].make_open()
 
             draw()
+
+    def __str__(self) -> str:
+        return "DFS"
