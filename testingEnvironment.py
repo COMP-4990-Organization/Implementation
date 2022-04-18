@@ -264,6 +264,7 @@ def main(win, width):
 			execution_time = end_time - start_time
 		else:
 			print("Path Finding Algorithm not found. Valid Algorithms: astar, bfs, dfs, dijkstra")
+			return
 
 		nodes_explored = count_nodes_explored(grid.grid, ROWS)
 

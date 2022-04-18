@@ -79,7 +79,7 @@ class Grid:
                     line_width = 3
                 else:
                     line_width = 1
-                pygame.draw.line(self.win, Constants.GREY,(self.x_offset, self.y_offset + (i * gap)), (self.x_offset + self.width, self.y_offset + (i * gap)), line_width)
+                pygame.draw.line(self.win, Constants.GREY,(0, (i * gap)), (self.width, (i * gap)), line_width)
             
             # Will eventually change to using the cols variable
             for j in range(self.rows+1):
@@ -87,7 +87,7 @@ class Grid:
                     line_width = 3
                 else:
                     line_width = 1
-                pygame.draw.line(self.win, Constants.GREY,(self.x_offset + (j * gap), self.y_offset), (self.x_offset + (j * gap), self.y_offset + self.width), line_width)
+                pygame.draw.line(self.win, Constants.GREY,((j * gap), 0), (j * gap,self.width), line_width)
 
     # Copies a grid, used when multiple grids are used in one window so each grid can use
     # a different search algorithm on the same grid
@@ -174,7 +174,7 @@ class Grid:
             # Read the current number of Grids that have been written
             # in order to get a new filename
 
-            with open("GridCreator\\GridNumber", 'r', newline='') as infile:
+            with open("GridUtil\\GridNumber", 'r', newline='') as infile:
                 number = int(infile.read())
             
             number += 1
@@ -211,7 +211,7 @@ class Grid:
             for i in range(self.rows+2):
                 outfile.write('1 ')
         if description == '':
-            with open("GridCreator\\GridNumber", 'w') as infile:
+            with open("GridUtil\\GridNumber", 'w') as infile:
                 infile.write(number)
         
         # Read a Grid from a file and save it to a Grid object

@@ -83,7 +83,7 @@ class ASTAR:
             if current == end:
                 break
             
-            for neighbor in current.neighbors:
+            for neighbor in current.neighbours:
                 temp_g_score = g_score[current] + 1
 
                 if temp_g_score < g_score[neighbor]:

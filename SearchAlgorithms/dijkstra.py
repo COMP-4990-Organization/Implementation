@@ -70,7 +70,7 @@ class DIJKSTRA:
                 print("Total cost of the trip is " + str(g_score[current]))
                 break
             
-            for neighbor in current.neighbors:
+            for neighbor in current.neighbours:
                 temp_g_score = g_score[current] + neighbor.weight
                 if(neighbor.is_closed()):
                     continue
